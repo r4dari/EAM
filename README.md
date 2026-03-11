@@ -1,4 +1,4 @@
-# Energy Asset Management System "InNova" (name TBD)
+# Energy Asset Management System "InNova"
 Учебный проект по управлению энергетическими активами и заявками на обслуживание
 
 EAM система моделирует рабочий процесс между администратором актива, менеджером и обслуживающими подразделениями.
@@ -43,7 +43,7 @@ EAM система моделирует рабочий процесс между
 
 
 # Технологии
-- Backend: TBD
-- Frontend: TBD
-- Database: TBD
+- Backend: PHP, JavaScript, CSS
+- Frontend: WordPress/Joomla (choosing in progress)
+- Database: PhpMyAdmin
 - Version Control: GitHub
