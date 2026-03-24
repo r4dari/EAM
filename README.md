@@ -43,7 +43,7 @@ EAM система моделирует рабочий процесс между
 
 
 # Технологии
-- Backend: PHP, JavaScript, CSS
-- Frontend: WordPress/Joomla (choosing in progress)
+- Languages: PHP, JavaScript, CSS
+- CMS: WordPress
 - Database: PhpMyAdmin
 - Version Control: GitHub
