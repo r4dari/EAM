@@ -1,0 +1,51 @@
+<?php
+/*
+Template Name: Dashboard
+*/
+
+get_header();
+
+$current_user = wp_get_current_user();
+
+global $wpdb;
+
+// Например, получаем заявки для менеджера
+if ( in_array('manager', $current_user->roles) ) {
+
+    $requests = $wpdb->get_results("SELECT * FROM wp_requests ORDER BY DateCreation DESC");
+
+    echo '<h2>Список всех заявок</h2>';
+    echo '<ul>';
+    foreach ($requests as $request) {
+        echo '<li>Заявка #' . esc_html($request->RequestID) . ' — Актив: ' . esc_html($request->AssetName) . ' — Статус: ' . esc_html($request->RequestStatus) . '</li>';
+    }
+    echo '</ul>';
+
+} elseif ( in_array('admin_asset', $current_user->roles) ) {
+
+    // Получить активы для администратора актива
+    $assets = $wpdb->get_results("SELECT * FROM wp_assets WHERE AssetGroup = '" . esc_sql($current_user->user_login) . "'");
+
+    echo '<h2>Ваши активы</h2>';
+    echo '<ul>';
+    foreach ($assets as $asset) {
+        echo '<li>' . esc_html($asset->AssetName) . ' — Состояние: ' . esc_html($asset->AssetStatus) . '</li>';
+    }
+    echo '</ul>';
+
+} elseif ( in_array('department_employee', $current_user->roles) ) {
+
+    // Заявки для сотрудника отдела
+    $requests = $wpdb->get_results("SELECT * FROM wp_requests WHERE Department = '" . esc_sql($current_user->user_login) . "' AND RequestStatus IN ('Назначена', 'На исполнении')");
+
+    echo '<h2>Заявки вашего отдела</h2>';
+    echo '<ul>';
+    foreach ($requests as $request) {
+        echo '<li>Заявка #' . esc_html($request->RequestID) . ' — Актив: ' . esc_html($request->AssetName) . ' — Статус: ' . esc_html($request->RequestStatus) . '</li>';
+    }
+    echo '</ul>';
+
+} else {
+    echo '<p>У вас нет прав для просмотра данной страницы.</p>';
+}
+;
