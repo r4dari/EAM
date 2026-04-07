@@ -18,44 +18,186 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
  * Link styles
  * https://github.com/WordPress/gutenberg/issues/42319
  */
-a {
-	text-decoration-thickness: 1px !important;
-	text-underline-offset: .1em;
+
+/* Общие стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #1e1e1e;
+    margin: 0;
+    padding: 0;
 }
 
-/* Focus styles */
-:where(.wp-site-blocks *:focus) {
-	outline-width: 2px;
-	outline-style: solid;
+/* Хедер */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #0073aa;
+    color: #ffffff;
 }
 
-/* Increase the bottom margin on submenus, so that the outline is visible. */
-.wp-block-navigation .wp-block-navigation-submenu .wp-block-navigation-item:not(:last-child) {
-	margin-bottom: 3px;
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
-.wp-block-navigation .wp-block-navigation-item .wp-block-navigation-item__content {
-	outline-offset: 4px;
+header a:hover {
+    text-decoration: underline;
 }
 
-/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
-.wp-block-navigation .wp-block-navigation-item ul.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
-	outline-offset: 0;
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/*
- * Progressive enhancement to reduce widows and orphans
- * https://github.com/WordPress/gutenberg/issues/55190
- */
-h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
-	text-wrap: pretty;
+table th, table td {
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc;
+    text-align: left;
+    font-size: 14px;
 }
 
-/*
- * Change the position of the more block on the front, by making it a block level element.
- * https://github.com/WordPress/gutenberg/issues/65934
-*/
-.more-link {
-	display: block;
+table th {
+    background-color: #0073aa;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+/* Заголовки страниц */
+h2 {
+    color: #0073aa;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+/* Кнопки */
+a.button, a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0073aa;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+a.button:hover, a.btn:hover {
+    background-color: #005f8a;
+}
+
+/* Сообщения */
+p {
+    margin-top: 20px;
+}
+
+/* Стили для формы заявки */
+form {
+    max-width: 700px;
+    margin: 30px auto 60px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form p {
+    margin-bottom: 20px;
+}
+
+form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+form input[type="text"],
+form select,
+form textarea,
+form input[type="file"] {
+    width: 100%;
+    border: 1px solid #dcdcdc; /* светло-серая граница в тон таблицам */
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #1e1e1e;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+form input[readonly],
+form textarea[readonly] {
+    background-color: #f9f9f9;
+    border-color: #e0e0e0;
+    color: #6a6a6a;
+    cursor: default;
+}
+
+form input[type="text"]:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 5px #0073aaaa;
+}
+
+form button {
+    background-color: #0073aa;
+    color: #fff;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+form button:hover {
+    background-color: #005f8a;
+}
+
+form a {
+    color: #0073aa;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
 }

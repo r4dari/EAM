@@ -2,6 +2,9 @@
 /*
 Template Name: Login Page
 */
+add_action('wp_head', function() {
+    echo '<title>EAMS - Вход</title>';
+});
 
 if ( is_user_logged_in() ) {
     wp_redirect( home_url('/?page_id=10') );
